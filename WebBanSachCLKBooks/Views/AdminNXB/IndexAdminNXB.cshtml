@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebBanSachCLKBooks.Models.SP_SELECT_NHAXUATBANResult>
+
+@{
+    ViewBag.Title = "IndexAdminNXB";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+        <div style="font-size:15px; font-weight:bold">
+            @Html.ActionLink("Thêm Nhà Xuất Bản", "CreateNXB", "AdminNXB")
+        </div>
+
+        @if (TempData["AlertMessage_AdminNXB"] != null)
+        {
+        <div id="AlertBox" class="alert @TempData["AlertType_AdminNXB"] hide" style="font-size:30px">
+            @TempData["AlertMessage_AdminNXB"]
+        </div>
+        }
+
+        <table class="table">
+            <tr>
+                <th>
+                    Mã NXB
+                </th>
+                <th>
+                    Tên NXB
+                </th>
+                <th>
+                    Địa Chỉ NXB
+                </th>
+                <th>
+                    Điện Thoại NXB
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaNXB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNXB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienThoai)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditNXB", new {  id=item.MaNXB  }) |
+                    @Html.ActionLink("Delete", "DeleteNXB", new {  id=item.MaNXB })
+                </td>
+            </tr>
+            }
+
+        </table>
+
+

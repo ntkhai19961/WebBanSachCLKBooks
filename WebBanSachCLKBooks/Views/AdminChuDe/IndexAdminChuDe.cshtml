@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebBanSachCLKBooks.Models.SP_SELECT_CHUDEResult>
+
+@{
+    ViewBag.Title = "IndexAdminChuDe";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+        <div style="font-size:15px; font-weight:bold">
+            @Html.ActionLink("Thêm Chủ Đề", "CreateChuDe", "AdminChuDe")
+        </div>
+
+        @if (TempData["AlertMessage_AdminChuDe"] != null)
+        {
+            <div id="AlertBox" class="alert @TempData["AlertType_AdminChuDe"] hide" style="font-size:30px">
+                @TempData["AlertMessage_AdminChuDe"]
+            </div>
+        }
+
+        <table class="table">
+            <tr>
+                <th>
+                    Mã Chủ Đề
+                </th>
+                <th>
+                    Tên Chủ Đề
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaCD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenChuDe)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditChuDe", new {  id=item.MaCD  }) |
+                    @Html.ActionLink("Delete", "DeleteChuDe", new {  id=item.MaCD  })
+                </td>
+            </tr>
+            }
+        </table>
+

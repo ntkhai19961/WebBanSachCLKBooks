@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebBanSachCLKBooks.Models.SP_SELECT_TACGIAResult>
+
+@{
+    ViewBag.Title = "IndexAdminTacGia";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+        <div style="font-size:15px; font-weight:bold">
+            @Html.ActionLink("Thêm Tác Giả", "CreateTacGia", "AdminTacGia")
+        </div>
+
+        @if (TempData["AlertMessage_AdminTacGia"] != null)
+        {
+        <div id="AlertBox" class="alert @TempData["AlertType_AdminTacGia"] hide" style="font-size:30px">
+            @TempData["AlertMessage_AdminTacGia"]
+        </div>
+        }
+
+        <table class="table">
+            <tr>
+                <th>
+                    Mã Tác Giả
+                </th>
+                <th>
+                    Tên Tác Giả
+                </th>
+                <th>
+                    Địa Chỉ Tác Giả
+                </th>
+                <th>
+                    Tiểu Sử
+                </th>
+                <th>
+                    Điện Thoại Tác Giả
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaTG)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenTG)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tieusu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dienthoai)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditTacGia", new {  id=item.MaTG  }) |
+                    @Html.ActionLink("Delete", "DeleteTacGia", new {  id=item.MaTG  })
+                </td>
+            </tr>
+            }
+
+        </table>
+
+

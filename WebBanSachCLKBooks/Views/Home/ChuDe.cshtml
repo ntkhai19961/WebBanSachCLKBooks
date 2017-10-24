@@ -1,0 +1,9 @@
+﻿@model IEnumerable<WebBanSachCLKBooks.Models.SP_SELECT_CHUDEResult>
+
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("SPTheoChuDe" , "Home" , new { id = item.MaCD })" class="list-group-item">
+        @item.TenChuDe
+    </a>
+}
+

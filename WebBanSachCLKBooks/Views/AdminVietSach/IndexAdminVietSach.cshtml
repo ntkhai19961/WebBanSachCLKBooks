@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebBanSachCLKBooks.Models.SP_SELECT_VIETSACH_GOM_MATG_MASACHResult>
+
+@{
+    ViewBag.Title = "IndexAdminVietSach";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Thêm mới sách của tác giả", "CreateVietSach")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.TenTG)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Tensach)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTG)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Tensach)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditVietSach", new { MaTG = item.MaTG , MaSach = item.Masach }) |
+            @Html.ActionLink("Delete", "DeleteVietSach", new { MaTG = item.MaTG, MaSach = item.Masach })
+        </td>
+    </tr>
+}
+
+</table>

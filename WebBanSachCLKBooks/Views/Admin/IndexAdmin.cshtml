@@ -1,0 +1,102 @@
+﻿@model IEnumerable<WebBanSachCLKBooks.Models.SP_SELECT_SACH_TENCD_TENNXBResult>
+
+@{
+    ViewBag.Title = "IndexAdmin";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+
+        <div style="font-size:15px; font-weight:bold">
+            @Html.ActionLink("Thêm Sách Mới", "CreateBook", "Admin")
+        </div>
+
+        @if (TempData["AlertMessage_Admin"] != null)
+        {
+            <div id="AlertBox" class="alert @TempData["AlertType_Admin"] hide" style="font-size:30px">
+                @TempData["AlertMessage_Admin"]
+            </div>
+        }
+
+        <table class="table">
+            <tr>
+                <th>
+                    Mã Sách
+                </th>
+                <th>
+                    Tên Sách
+                </th>
+                <th>
+                    Giá Bán
+                </th>
+                <th>
+                    Mô Tả
+                </th>
+                <th>
+                    Ảnh Bìa
+                </th>
+                <th>
+                    Ngày Cập Nhật
+                </th>
+                <th>
+                    Số Lượng Tồn
+                </th>
+                <th>
+                    Tên Chủ Đề
+                </th>
+                <th>
+                    Tên Nhà Xuất Bản
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Masach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tensach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Giaban)
+                </td>
+                <td style=" overflow hidden;
+                    border:0px;
+                    text-overflow ellipsis;
+                    display -webkit-box;
+                    line-height 1em;
+                    max-height 500px;
+                    -webkit-line-clamp 20;
+                    -webkit-box-orient vertical">
+                    @Html.DisplayFor(modelItem => item.Mota)
+                </td>
+                <td>
+                    <img src="~/images/dolphins2.jpg" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaycapnhat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soluongton)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenChuDe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNXB)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditBook", new { id = item.Masach })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteBook", new { id = item.Masach })
+                </td>
+            </tr>
+            }
+
+        </table>
+
+
+
