@@ -18,7 +18,7 @@ namespace WebBanSachCLKBooks.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        
+        //123456
         public AccountController()
         {
         }
