@@ -7,6 +7,7 @@ using WebBanSachCLKBooks.Models;
 
 namespace WebBanSachCLKBooks.Controllers
 {
+
     public class NguoiDungController : Controller
     {
         QLBanSachDataContext db = new QLBanSachDataContext();
@@ -23,7 +24,7 @@ namespace WebBanSachCLKBooks.Controllers
             return View();
         }
 
-        // POST : Hàm DangKy(post) nhận dữ liệu từ trang DangKy
+        // POST : Hàm DangKy(post) nhận dữ liệu từ trang Dang Ky
         [HttpPost]
         public ActionResult DangKy(FormCollection collection)
         {
@@ -61,7 +62,6 @@ namespace WebBanSachCLKBooks.Controllers
                 ViewData["Loi6"] = "Phải Nhập Điện Thoại";
             }
             else {
-
                 //try
                 //{
                 //    DateTime NgaySinhParse = DateTime.Parse(NgaySinh);
@@ -74,7 +74,6 @@ namespace WebBanSachCLKBooks.Controllers
                 //    ViewData["Loi7"] = "Ngày Sinh Không Phù Hợp";
                 //}
             }
-
             return View();
         }
 
