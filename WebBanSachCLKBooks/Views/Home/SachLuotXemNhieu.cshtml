@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebBanSachCLKBooks.Models.SP_SACH_LUOT_XEM_NHIEUResult>
+
+<div class="row">
+
+    <h3 style="Text-align:Center; color:red"> SÁCH LƯỢT XEM NHIỀU </h3>
+
+    <!-- ---------------------------------------------------------------------------------------  -->
+
+    @foreach (var item in Model)
+    {
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+
+            <a href="@Url.Action("Detail" , "Home" , new { id = item.Masach })">
+
+                <img src="~/images/dolphins2.jpg" width="100">
+
+                <div class="caption">
+                    <h4 class="pull-right">@item.Giaban</h4>
+                    <div style="width:180px">
+                        <h4 id="idTenSach">
+                            <a href="#">
+                                @item.Tensach
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+
+
+                <div class="ratings">
+                    <p class="pull-right">15 reviews</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </p>
+                </div>
+        </div>
+    </div>
+    }
+</div>
+
+
+
+
+

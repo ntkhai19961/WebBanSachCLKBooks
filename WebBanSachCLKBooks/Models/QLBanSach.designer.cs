@@ -54,12 +54,12 @@ namespace WebBanSachCLKBooks.Models
     partial void InsertNHAXUATBAN(NHAXUATBAN instance);
     partial void UpdateNHAXUATBAN(NHAXUATBAN instance);
     partial void DeleteNHAXUATBAN(NHAXUATBAN instance);
-    partial void InsertSACH(SACH instance);
-    partial void UpdateSACH(SACH instance);
-    partial void DeleteSACH(SACH instance);
     partial void InsertTACGIA(TACGIA instance);
     partial void UpdateTACGIA(TACGIA instance);
     partial void DeleteTACGIA(TACGIA instance);
+    partial void InsertSACH(SACH instance);
+    partial void UpdateSACH(SACH instance);
+    partial void DeleteSACH(SACH instance);
     #endregion
 		
 		public QLBanSachDataContext() : 
@@ -156,19 +156,19 @@ namespace WebBanSachCLKBooks.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<SACH> SACHes
-		{
-			get
-			{
-				return this.GetTable<SACH>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TACGIA> TACGIAs
 		{
 			get
 			{
 				return this.GetTable<TACGIA>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SACH> SACHes
+		{
+			get
+			{
+				return this.GetTable<SACH>();
 			}
 		}
 		
@@ -402,6 +402,62 @@ namespace WebBanSachCLKBooks.Models
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<SP_SELECT_SACH_TENCD_TENNXBResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_TIM_KIEM_SACH_THEO_TEN")]
+		public ISingleResult<SP_TIM_KIEM_SACH_THEO_TENResult> SP_TIM_KIEM_SACH_THEO_TEN([global::System.Data.Linq.Mapping.ParameterAttribute(Name="TENSACH", DbType="NVarChar(100)")] string tENSACH)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), tENSACH);
+			return ((ISingleResult<SP_TIM_KIEM_SACH_THEO_TENResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_SACH_LUOT_XEM_NHIEU")]
+		public ISingleResult<SP_SACH_LUOT_XEM_NHIEUResult> SP_SACH_LUOT_XEM_NHIEU([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SO_LUOT_XEM_YEU_CAU_THANH_SACH_LUOT_XEM_NHIEU", DbType="Int")] System.Nullable<int> sO_LUOT_XEM_YEU_CAU_THANH_SACH_LUOT_XEM_NHIEU)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sO_LUOT_XEM_YEU_CAU_THANH_SACH_LUOT_XEM_NHIEU);
+			return ((ISingleResult<SP_SACH_LUOT_XEM_NHIEUResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_SACH_NOIBAT")]
+		public ISingleResult<SP_SACH_NOIBATResult> SP_SACH_NOIBAT([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SO_LUOT_MUA_YEU_CAU_THANH_SACH_NOI_BAT", DbType="Int")] System.Nullable<int> sO_LUOT_MUA_YEU_CAU_THANH_SACH_NOI_BAT)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sO_LUOT_MUA_YEU_CAU_THANH_SACH_NOI_BAT);
+			return ((ISingleResult<SP_SACH_NOIBATResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CAP_NHAT_LUOT_XEM_CUA_SACH_KHI_XEM_CHI_TIET_SACH_THEO_MA_SACH")]
+		public int CAP_NHAT_LUOT_XEM_CUA_SACH_KHI_XEM_CHI_TIET_SACH_THEO_MA_SACH([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MASACH", DbType="Int")] System.Nullable<int> mASACH)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mASACH);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CAP_NHAT_LUOT_MUA_CUA_SACH_KHI_DAT_HANG_THEO_MA_SACH")]
+		public int CAP_NHAT_LUOT_MUA_CUA_SACH_KHI_DAT_HANG_THEO_MA_SACH([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MASACH", DbType="Int")] System.Nullable<int> mASACH)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mASACH);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CAP_NHAT_SO_LUONG_TON_CUA_SACH_THEO_MA_SACH")]
+		public int SP_CAP_NHAT_SO_LUONG_TON_CUA_SACH_THEO_MA_SACH([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MASACH", DbType="Int")] System.Nullable<int> mASACH, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SOLUONGMUA", DbType="Int")] System.Nullable<int> sOLUONGMUA)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mASACH, sOLUONGMUA);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_TIM_KIEM_SACH_THEO_GIA")]
+		public ISingleResult<SP_TIM_KIEM_SACH_THEO_GIAResult> SP_TIM_KIEM_SACH_THEO_GIA([global::System.Data.Linq.Mapping.ParameterAttribute(Name="GIADAU", DbType="Decimal(18,0)")] System.Nullable<decimal> gIADAU, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GIACUOI", DbType="Decimal(18,0)")] System.Nullable<decimal> gIACUOI)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), gIADAU, gIACUOI);
+			return ((ISingleResult<SP_TIM_KIEM_SACH_THEO_GIAResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_SELECT_SACH_THEO_THUOC_TINH_NOI_BAT")]
+		public ISingleResult<SP_SELECT_SACH_THEO_THUOC_TINH_NOI_BATResult> SP_SELECT_SACH_THEO_THUOC_TINH_NOI_BAT()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_SELECT_SACH_THEO_THUOC_TINH_NOI_BATResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VIETSACH")]
@@ -418,9 +474,9 @@ namespace WebBanSachCLKBooks.Models
 		
 		private string _Vitri;
 		
-		private EntityRef<SACH> _SACH;
-		
 		private EntityRef<TACGIA> _TACGIA;
+		
+		private EntityRef<SACH> _SACH;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -438,8 +494,8 @@ namespace WebBanSachCLKBooks.Models
 		
 		public VIETSACH()
 		{
-			this._SACH = default(EntityRef<SACH>);
 			this._TACGIA = default(EntityRef<TACGIA>);
+			this._SACH = default(EntityRef<SACH>);
 			OnCreated();
 		}
 		
@@ -531,40 +587,6 @@ namespace WebBanSachCLKBooks.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SACH_VIETSACH", Storage="_SACH", ThisKey="Masach", OtherKey="Masach", IsForeignKey=true)]
-		public SACH SACH
-		{
-			get
-			{
-				return this._SACH.Entity;
-			}
-			set
-			{
-				SACH previousValue = this._SACH.Entity;
-				if (((previousValue != value) 
-							|| (this._SACH.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SACH.Entity = null;
-						previousValue.VIETSACHes.Remove(this);
-					}
-					this._SACH.Entity = value;
-					if ((value != null))
-					{
-						value.VIETSACHes.Add(this);
-						this._Masach = value.Masach;
-					}
-					else
-					{
-						this._Masach = default(int);
-					}
-					this.SendPropertyChanged("SACH");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TACGIA_VIETSACH", Storage="_TACGIA", ThisKey="MaTG", OtherKey="MaTG", IsForeignKey=true)]
 		public TACGIA TACGIA
 		{
@@ -595,6 +617,40 @@ namespace WebBanSachCLKBooks.Models
 						this._MaTG = default(int);
 					}
 					this.SendPropertyChanged("TACGIA");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SACH_VIETSACH", Storage="_SACH", ThisKey="Masach", OtherKey="Masach", IsForeignKey=true)]
+		public SACH SACH
+		{
+			get
+			{
+				return this._SACH.Entity;
+			}
+			set
+			{
+				SACH previousValue = this._SACH.Entity;
+				if (((previousValue != value) 
+							|| (this._SACH.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SACH.Entity = null;
+						previousValue.VIETSACHes.Remove(this);
+					}
+					this._SACH.Entity = value;
+					if ((value != null))
+					{
+						value.VIETSACHes.Add(this);
+						this._Masach = value.Masach;
+					}
+					else
+					{
+						this._Masach = default(int);
+					}
+					this.SendPropertyChanged("SACH");
 				}
 			}
 		}
@@ -2027,6 +2083,192 @@ namespace WebBanSachCLKBooks.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TACGIA")]
+	public partial class TACGIA : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MaTG;
+		
+		private string _TenTG;
+		
+		private string _Diachi;
+		
+		private string _Tieusu;
+		
+		private string _Dienthoai;
+		
+		private EntitySet<VIETSACH> _VIETSACHes;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaTGChanging(int value);
+    partial void OnMaTGChanged();
+    partial void OnTenTGChanging(string value);
+    partial void OnTenTGChanged();
+    partial void OnDiachiChanging(string value);
+    partial void OnDiachiChanged();
+    partial void OnTieusuChanging(string value);
+    partial void OnTieusuChanged();
+    partial void OnDienthoaiChanging(string value);
+    partial void OnDienthoaiChanged();
+    #endregion
+		
+		public TACGIA()
+		{
+			this._VIETSACHes = new EntitySet<VIETSACH>(new Action<VIETSACH>(this.attach_VIETSACHes), new Action<VIETSACH>(this.detach_VIETSACHes));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTG", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MaTG
+		{
+			get
+			{
+				return this._MaTG;
+			}
+			set
+			{
+				if ((this._MaTG != value))
+				{
+					this.OnMaTGChanging(value);
+					this.SendPropertyChanging();
+					this._MaTG = value;
+					this.SendPropertyChanged("MaTG");
+					this.OnMaTGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTG", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string TenTG
+		{
+			get
+			{
+				return this._TenTG;
+			}
+			set
+			{
+				if ((this._TenTG != value))
+				{
+					this.OnTenTGChanging(value);
+					this.SendPropertyChanging();
+					this._TenTG = value;
+					this.SendPropertyChanged("TenTG");
+					this.OnTenTGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diachi", DbType="NVarChar(100)")]
+		public string Diachi
+		{
+			get
+			{
+				return this._Diachi;
+			}
+			set
+			{
+				if ((this._Diachi != value))
+				{
+					this.OnDiachiChanging(value);
+					this.SendPropertyChanging();
+					this._Diachi = value;
+					this.SendPropertyChanged("Diachi");
+					this.OnDiachiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tieusu", DbType="NVarChar(MAX)")]
+		public string Tieusu
+		{
+			get
+			{
+				return this._Tieusu;
+			}
+			set
+			{
+				if ((this._Tieusu != value))
+				{
+					this.OnTieusuChanging(value);
+					this.SendPropertyChanging();
+					this._Tieusu = value;
+					this.SendPropertyChanged("Tieusu");
+					this.OnTieusuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dienthoai", DbType="VarChar(50)")]
+		public string Dienthoai
+		{
+			get
+			{
+				return this._Dienthoai;
+			}
+			set
+			{
+				if ((this._Dienthoai != value))
+				{
+					this.OnDienthoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Dienthoai = value;
+					this.SendPropertyChanged("Dienthoai");
+					this.OnDienthoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TACGIA_VIETSACH", Storage="_VIETSACHes", ThisKey="MaTG", OtherKey="MaTG")]
+		public EntitySet<VIETSACH> VIETSACHes
+		{
+			get
+			{
+				return this._VIETSACHes;
+			}
+			set
+			{
+				this._VIETSACHes.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_VIETSACHes(VIETSACH entity)
+		{
+			this.SendPropertyChanging();
+			entity.TACGIA = this;
+		}
+		
+		private void detach_VIETSACHes(VIETSACH entity)
+		{
+			this.SendPropertyChanging();
+			entity.TACGIA = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SACH")]
 	public partial class SACH : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2050,6 +2292,12 @@ namespace WebBanSachCLKBooks.Models
 		private System.Nullable<int> _MaCD;
 		
 		private System.Nullable<int> _MaNXB;
+		
+		private System.Nullable<int> _LuotXem;
+		
+		private System.Nullable<int> _SoLuotMua;
+		
+		private System.Nullable<bool> _NoiBat;
 		
 		private EntitySet<VIETSACH> _VIETSACHes;
 		
@@ -2081,6 +2329,12 @@ namespace WebBanSachCLKBooks.Models
     partial void OnMaCDChanged();
     partial void OnMaNXBChanging(System.Nullable<int> value);
     partial void OnMaNXBChanged();
+    partial void OnLuotXemChanging(System.Nullable<int> value);
+    partial void OnLuotXemChanged();
+    partial void OnSoLuotMuaChanging(System.Nullable<int> value);
+    partial void OnSoLuotMuaChanged();
+    partial void OnNoiBatChanging(System.Nullable<bool> value);
+    partial void OnNoiBatChanged();
     #endregion
 		
 		public SACH()
@@ -2280,6 +2534,66 @@ namespace WebBanSachCLKBooks.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LuotXem", DbType="Int")]
+		public System.Nullable<int> LuotXem
+		{
+			get
+			{
+				return this._LuotXem;
+			}
+			set
+			{
+				if ((this._LuotXem != value))
+				{
+					this.OnLuotXemChanging(value);
+					this.SendPropertyChanging();
+					this._LuotXem = value;
+					this.SendPropertyChanged("LuotXem");
+					this.OnLuotXemChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuotMua", DbType="Int")]
+		public System.Nullable<int> SoLuotMua
+		{
+			get
+			{
+				return this._SoLuotMua;
+			}
+			set
+			{
+				if ((this._SoLuotMua != value))
+				{
+					this.OnSoLuotMuaChanging(value);
+					this.SendPropertyChanging();
+					this._SoLuotMua = value;
+					this.SendPropertyChanged("SoLuotMua");
+					this.OnSoLuotMuaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiBat", DbType="Bit")]
+		public System.Nullable<bool> NoiBat
+		{
+			get
+			{
+				return this._NoiBat;
+			}
+			set
+			{
+				if ((this._NoiBat != value))
+				{
+					this.OnNoiBatChanging(value);
+					this.SendPropertyChanging();
+					this._NoiBat = value;
+					this.SendPropertyChanged("NoiBat");
+					this.OnNoiBatChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SACH_VIETSACH", Storage="_VIETSACHes", ThisKey="Masach", OtherKey="Masach")]
 		public EntitySet<VIETSACH> VIETSACHes
 		{
@@ -2416,192 +2730,6 @@ namespace WebBanSachCLKBooks.Models
 		{
 			this.SendPropertyChanging();
 			entity.SACH = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TACGIA")]
-	public partial class TACGIA : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaTG;
-		
-		private string _TenTG;
-		
-		private string _Diachi;
-		
-		private string _Tieusu;
-		
-		private string _Dienthoai;
-		
-		private EntitySet<VIETSACH> _VIETSACHes;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaTGChanging(int value);
-    partial void OnMaTGChanged();
-    partial void OnTenTGChanging(string value);
-    partial void OnTenTGChanged();
-    partial void OnDiachiChanging(string value);
-    partial void OnDiachiChanged();
-    partial void OnTieusuChanging(string value);
-    partial void OnTieusuChanged();
-    partial void OnDienthoaiChanging(string value);
-    partial void OnDienthoaiChanged();
-    #endregion
-		
-		public TACGIA()
-		{
-			this._VIETSACHes = new EntitySet<VIETSACH>(new Action<VIETSACH>(this.attach_VIETSACHes), new Action<VIETSACH>(this.detach_VIETSACHes));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTG", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaTG
-		{
-			get
-			{
-				return this._MaTG;
-			}
-			set
-			{
-				if ((this._MaTG != value))
-				{
-					this.OnMaTGChanging(value);
-					this.SendPropertyChanging();
-					this._MaTG = value;
-					this.SendPropertyChanged("MaTG");
-					this.OnMaTGChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTG", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string TenTG
-		{
-			get
-			{
-				return this._TenTG;
-			}
-			set
-			{
-				if ((this._TenTG != value))
-				{
-					this.OnTenTGChanging(value);
-					this.SendPropertyChanging();
-					this._TenTG = value;
-					this.SendPropertyChanged("TenTG");
-					this.OnTenTGChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diachi", DbType="NVarChar(100)")]
-		public string Diachi
-		{
-			get
-			{
-				return this._Diachi;
-			}
-			set
-			{
-				if ((this._Diachi != value))
-				{
-					this.OnDiachiChanging(value);
-					this.SendPropertyChanging();
-					this._Diachi = value;
-					this.SendPropertyChanged("Diachi");
-					this.OnDiachiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tieusu", DbType="NVarChar(MAX)")]
-		public string Tieusu
-		{
-			get
-			{
-				return this._Tieusu;
-			}
-			set
-			{
-				if ((this._Tieusu != value))
-				{
-					this.OnTieusuChanging(value);
-					this.SendPropertyChanging();
-					this._Tieusu = value;
-					this.SendPropertyChanged("Tieusu");
-					this.OnTieusuChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dienthoai", DbType="VarChar(50)")]
-		public string Dienthoai
-		{
-			get
-			{
-				return this._Dienthoai;
-			}
-			set
-			{
-				if ((this._Dienthoai != value))
-				{
-					this.OnDienthoaiChanging(value);
-					this.SendPropertyChanging();
-					this._Dienthoai = value;
-					this.SendPropertyChanged("Dienthoai");
-					this.OnDienthoaiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TACGIA_VIETSACH", Storage="_VIETSACHes", ThisKey="MaTG", OtherKey="MaTG")]
-		public EntitySet<VIETSACH> VIETSACHes
-		{
-			get
-			{
-				return this._VIETSACHes;
-			}
-			set
-			{
-				this._VIETSACHes.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_VIETSACHes(VIETSACH entity)
-		{
-			this.SendPropertyChanging();
-			entity.TACGIA = this;
-		}
-		
-		private void detach_VIETSACHes(VIETSACH entity)
-		{
-			this.SendPropertyChanging();
-			entity.TACGIA = null;
 		}
 	}
 	
@@ -4510,6 +4638,1036 @@ namespace WebBanSachCLKBooks.Models
 				if ((this._TenNXB != value))
 				{
 					this._TenNXB = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_TIM_KIEM_SACH_THEO_TENResult
+	{
+		
+		private int _Masach;
+		
+		private string _Tensach;
+		
+		private System.Nullable<decimal> _Giaban;
+		
+		private string _Mota;
+		
+		private string _Anhbia;
+		
+		private System.Nullable<System.DateTime> _Ngaycapnhat;
+		
+		private System.Nullable<int> _Soluongton;
+		
+		private System.Nullable<int> _MaCD;
+		
+		private System.Nullable<int> _MaNXB;
+		
+		private System.Nullable<int> _LuotXem;
+		
+		public SP_TIM_KIEM_SACH_THEO_TENResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Masach", DbType="Int NOT NULL")]
+		public int Masach
+		{
+			get
+			{
+				return this._Masach;
+			}
+			set
+			{
+				if ((this._Masach != value))
+				{
+					this._Masach = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tensach", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Tensach
+		{
+			get
+			{
+				return this._Tensach;
+			}
+			set
+			{
+				if ((this._Tensach != value))
+				{
+					this._Tensach = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Giaban", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Giaban
+		{
+			get
+			{
+				return this._Giaban;
+			}
+			set
+			{
+				if ((this._Giaban != value))
+				{
+					this._Giaban = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mota", DbType="NVarChar(MAX)")]
+		public string Mota
+		{
+			get
+			{
+				return this._Mota;
+			}
+			set
+			{
+				if ((this._Mota != value))
+				{
+					this._Mota = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anhbia", DbType="VarChar(50)")]
+		public string Anhbia
+		{
+			get
+			{
+				return this._Anhbia;
+			}
+			set
+			{
+				if ((this._Anhbia != value))
+				{
+					this._Anhbia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ngaycapnhat", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ngaycapnhat
+		{
+			get
+			{
+				return this._Ngaycapnhat;
+			}
+			set
+			{
+				if ((this._Ngaycapnhat != value))
+				{
+					this._Ngaycapnhat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Soluongton", DbType="Int")]
+		public System.Nullable<int> Soluongton
+		{
+			get
+			{
+				return this._Soluongton;
+			}
+			set
+			{
+				if ((this._Soluongton != value))
+				{
+					this._Soluongton = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCD", DbType="Int")]
+		public System.Nullable<int> MaCD
+		{
+			get
+			{
+				return this._MaCD;
+			}
+			set
+			{
+				if ((this._MaCD != value))
+				{
+					this._MaCD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNXB", DbType="Int")]
+		public System.Nullable<int> MaNXB
+		{
+			get
+			{
+				return this._MaNXB;
+			}
+			set
+			{
+				if ((this._MaNXB != value))
+				{
+					this._MaNXB = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LuotXem", DbType="Int")]
+		public System.Nullable<int> LuotXem
+		{
+			get
+			{
+				return this._LuotXem;
+			}
+			set
+			{
+				if ((this._LuotXem != value))
+				{
+					this._LuotXem = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_SACH_LUOT_XEM_NHIEUResult
+	{
+		
+		private int _Masach;
+		
+		private string _Tensach;
+		
+		private System.Nullable<decimal> _Giaban;
+		
+		private string _Mota;
+		
+		private string _Anhbia;
+		
+		private System.Nullable<System.DateTime> _Ngaycapnhat;
+		
+		private System.Nullable<int> _Soluongton;
+		
+		private System.Nullable<int> _MaCD;
+		
+		private System.Nullable<int> _MaNXB;
+		
+		private System.Nullable<int> _LuotXem;
+		
+		private System.Nullable<int> _SoLuotMua;
+		
+		public SP_SACH_LUOT_XEM_NHIEUResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Masach", DbType="Int NOT NULL")]
+		public int Masach
+		{
+			get
+			{
+				return this._Masach;
+			}
+			set
+			{
+				if ((this._Masach != value))
+				{
+					this._Masach = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tensach", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Tensach
+		{
+			get
+			{
+				return this._Tensach;
+			}
+			set
+			{
+				if ((this._Tensach != value))
+				{
+					this._Tensach = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Giaban", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Giaban
+		{
+			get
+			{
+				return this._Giaban;
+			}
+			set
+			{
+				if ((this._Giaban != value))
+				{
+					this._Giaban = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mota", DbType="NVarChar(MAX)")]
+		public string Mota
+		{
+			get
+			{
+				return this._Mota;
+			}
+			set
+			{
+				if ((this._Mota != value))
+				{
+					this._Mota = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anhbia", DbType="VarChar(50)")]
+		public string Anhbia
+		{
+			get
+			{
+				return this._Anhbia;
+			}
+			set
+			{
+				if ((this._Anhbia != value))
+				{
+					this._Anhbia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ngaycapnhat", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ngaycapnhat
+		{
+			get
+			{
+				return this._Ngaycapnhat;
+			}
+			set
+			{
+				if ((this._Ngaycapnhat != value))
+				{
+					this._Ngaycapnhat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Soluongton", DbType="Int")]
+		public System.Nullable<int> Soluongton
+		{
+			get
+			{
+				return this._Soluongton;
+			}
+			set
+			{
+				if ((this._Soluongton != value))
+				{
+					this._Soluongton = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCD", DbType="Int")]
+		public System.Nullable<int> MaCD
+		{
+			get
+			{
+				return this._MaCD;
+			}
+			set
+			{
+				if ((this._MaCD != value))
+				{
+					this._MaCD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNXB", DbType="Int")]
+		public System.Nullable<int> MaNXB
+		{
+			get
+			{
+				return this._MaNXB;
+			}
+			set
+			{
+				if ((this._MaNXB != value))
+				{
+					this._MaNXB = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LuotXem", DbType="Int")]
+		public System.Nullable<int> LuotXem
+		{
+			get
+			{
+				return this._LuotXem;
+			}
+			set
+			{
+				if ((this._LuotXem != value))
+				{
+					this._LuotXem = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuotMua", DbType="Int")]
+		public System.Nullable<int> SoLuotMua
+		{
+			get
+			{
+				return this._SoLuotMua;
+			}
+			set
+			{
+				if ((this._SoLuotMua != value))
+				{
+					this._SoLuotMua = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_SACH_NOIBATResult
+	{
+		
+		private int _Masach;
+		
+		private string _Tensach;
+		
+		private System.Nullable<decimal> _Giaban;
+		
+		private string _Mota;
+		
+		private string _Anhbia;
+		
+		private System.Nullable<System.DateTime> _Ngaycapnhat;
+		
+		private System.Nullable<int> _Soluongton;
+		
+		private System.Nullable<int> _MaCD;
+		
+		private System.Nullable<int> _MaNXB;
+		
+		private System.Nullable<int> _LuotXem;
+		
+		private System.Nullable<int> _SoLuotMua;
+		
+		public SP_SACH_NOIBATResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Masach", DbType="Int NOT NULL")]
+		public int Masach
+		{
+			get
+			{
+				return this._Masach;
+			}
+			set
+			{
+				if ((this._Masach != value))
+				{
+					this._Masach = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tensach", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Tensach
+		{
+			get
+			{
+				return this._Tensach;
+			}
+			set
+			{
+				if ((this._Tensach != value))
+				{
+					this._Tensach = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Giaban", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Giaban
+		{
+			get
+			{
+				return this._Giaban;
+			}
+			set
+			{
+				if ((this._Giaban != value))
+				{
+					this._Giaban = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mota", DbType="NVarChar(MAX)")]
+		public string Mota
+		{
+			get
+			{
+				return this._Mota;
+			}
+			set
+			{
+				if ((this._Mota != value))
+				{
+					this._Mota = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anhbia", DbType="VarChar(50)")]
+		public string Anhbia
+		{
+			get
+			{
+				return this._Anhbia;
+			}
+			set
+			{
+				if ((this._Anhbia != value))
+				{
+					this._Anhbia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ngaycapnhat", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ngaycapnhat
+		{
+			get
+			{
+				return this._Ngaycapnhat;
+			}
+			set
+			{
+				if ((this._Ngaycapnhat != value))
+				{
+					this._Ngaycapnhat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Soluongton", DbType="Int")]
+		public System.Nullable<int> Soluongton
+		{
+			get
+			{
+				return this._Soluongton;
+			}
+			set
+			{
+				if ((this._Soluongton != value))
+				{
+					this._Soluongton = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCD", DbType="Int")]
+		public System.Nullable<int> MaCD
+		{
+			get
+			{
+				return this._MaCD;
+			}
+			set
+			{
+				if ((this._MaCD != value))
+				{
+					this._MaCD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNXB", DbType="Int")]
+		public System.Nullable<int> MaNXB
+		{
+			get
+			{
+				return this._MaNXB;
+			}
+			set
+			{
+				if ((this._MaNXB != value))
+				{
+					this._MaNXB = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LuotXem", DbType="Int")]
+		public System.Nullable<int> LuotXem
+		{
+			get
+			{
+				return this._LuotXem;
+			}
+			set
+			{
+				if ((this._LuotXem != value))
+				{
+					this._LuotXem = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuotMua", DbType="Int")]
+		public System.Nullable<int> SoLuotMua
+		{
+			get
+			{
+				return this._SoLuotMua;
+			}
+			set
+			{
+				if ((this._SoLuotMua != value))
+				{
+					this._SoLuotMua = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_TIM_KIEM_SACH_THEO_GIAResult
+	{
+		
+		private int _Masach;
+		
+		private string _Tensach;
+		
+		private System.Nullable<decimal> _Giaban;
+		
+		private string _Mota;
+		
+		private string _Anhbia;
+		
+		private System.Nullable<System.DateTime> _Ngaycapnhat;
+		
+		private System.Nullable<int> _Soluongton;
+		
+		private System.Nullable<int> _MaCD;
+		
+		private System.Nullable<int> _MaNXB;
+		
+		private System.Nullable<int> _LuotXem;
+		
+		private System.Nullable<int> _SoLuotMua;
+		
+		public SP_TIM_KIEM_SACH_THEO_GIAResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Masach", DbType="Int NOT NULL")]
+		public int Masach
+		{
+			get
+			{
+				return this._Masach;
+			}
+			set
+			{
+				if ((this._Masach != value))
+				{
+					this._Masach = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tensach", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Tensach
+		{
+			get
+			{
+				return this._Tensach;
+			}
+			set
+			{
+				if ((this._Tensach != value))
+				{
+					this._Tensach = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Giaban", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Giaban
+		{
+			get
+			{
+				return this._Giaban;
+			}
+			set
+			{
+				if ((this._Giaban != value))
+				{
+					this._Giaban = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mota", DbType="NVarChar(MAX)")]
+		public string Mota
+		{
+			get
+			{
+				return this._Mota;
+			}
+			set
+			{
+				if ((this._Mota != value))
+				{
+					this._Mota = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anhbia", DbType="VarChar(50)")]
+		public string Anhbia
+		{
+			get
+			{
+				return this._Anhbia;
+			}
+			set
+			{
+				if ((this._Anhbia != value))
+				{
+					this._Anhbia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ngaycapnhat", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ngaycapnhat
+		{
+			get
+			{
+				return this._Ngaycapnhat;
+			}
+			set
+			{
+				if ((this._Ngaycapnhat != value))
+				{
+					this._Ngaycapnhat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Soluongton", DbType="Int")]
+		public System.Nullable<int> Soluongton
+		{
+			get
+			{
+				return this._Soluongton;
+			}
+			set
+			{
+				if ((this._Soluongton != value))
+				{
+					this._Soluongton = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCD", DbType="Int")]
+		public System.Nullable<int> MaCD
+		{
+			get
+			{
+				return this._MaCD;
+			}
+			set
+			{
+				if ((this._MaCD != value))
+				{
+					this._MaCD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNXB", DbType="Int")]
+		public System.Nullable<int> MaNXB
+		{
+			get
+			{
+				return this._MaNXB;
+			}
+			set
+			{
+				if ((this._MaNXB != value))
+				{
+					this._MaNXB = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LuotXem", DbType="Int")]
+		public System.Nullable<int> LuotXem
+		{
+			get
+			{
+				return this._LuotXem;
+			}
+			set
+			{
+				if ((this._LuotXem != value))
+				{
+					this._LuotXem = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuotMua", DbType="Int")]
+		public System.Nullable<int> SoLuotMua
+		{
+			get
+			{
+				return this._SoLuotMua;
+			}
+			set
+			{
+				if ((this._SoLuotMua != value))
+				{
+					this._SoLuotMua = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_SELECT_SACH_THEO_THUOC_TINH_NOI_BATResult
+	{
+		
+		private int _Masach;
+		
+		private string _Tensach;
+		
+		private System.Nullable<decimal> _Giaban;
+		
+		private string _Mota;
+		
+		private string _Anhbia;
+		
+		private System.Nullable<System.DateTime> _Ngaycapnhat;
+		
+		private System.Nullable<int> _Soluongton;
+		
+		private System.Nullable<int> _MaCD;
+		
+		private System.Nullable<int> _MaNXB;
+		
+		private System.Nullable<int> _LuotXem;
+		
+		private System.Nullable<int> _SoLuotMua;
+		
+		private System.Nullable<bool> _NoiBat;
+		
+		public SP_SELECT_SACH_THEO_THUOC_TINH_NOI_BATResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Masach", DbType="Int NOT NULL")]
+		public int Masach
+		{
+			get
+			{
+				return this._Masach;
+			}
+			set
+			{
+				if ((this._Masach != value))
+				{
+					this._Masach = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tensach", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Tensach
+		{
+			get
+			{
+				return this._Tensach;
+			}
+			set
+			{
+				if ((this._Tensach != value))
+				{
+					this._Tensach = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Giaban", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Giaban
+		{
+			get
+			{
+				return this._Giaban;
+			}
+			set
+			{
+				if ((this._Giaban != value))
+				{
+					this._Giaban = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mota", DbType="NVarChar(MAX)")]
+		public string Mota
+		{
+			get
+			{
+				return this._Mota;
+			}
+			set
+			{
+				if ((this._Mota != value))
+				{
+					this._Mota = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anhbia", DbType="VarChar(50)")]
+		public string Anhbia
+		{
+			get
+			{
+				return this._Anhbia;
+			}
+			set
+			{
+				if ((this._Anhbia != value))
+				{
+					this._Anhbia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ngaycapnhat", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ngaycapnhat
+		{
+			get
+			{
+				return this._Ngaycapnhat;
+			}
+			set
+			{
+				if ((this._Ngaycapnhat != value))
+				{
+					this._Ngaycapnhat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Soluongton", DbType="Int")]
+		public System.Nullable<int> Soluongton
+		{
+			get
+			{
+				return this._Soluongton;
+			}
+			set
+			{
+				if ((this._Soluongton != value))
+				{
+					this._Soluongton = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCD", DbType="Int")]
+		public System.Nullable<int> MaCD
+		{
+			get
+			{
+				return this._MaCD;
+			}
+			set
+			{
+				if ((this._MaCD != value))
+				{
+					this._MaCD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNXB", DbType="Int")]
+		public System.Nullable<int> MaNXB
+		{
+			get
+			{
+				return this._MaNXB;
+			}
+			set
+			{
+				if ((this._MaNXB != value))
+				{
+					this._MaNXB = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LuotXem", DbType="Int")]
+		public System.Nullable<int> LuotXem
+		{
+			get
+			{
+				return this._LuotXem;
+			}
+			set
+			{
+				if ((this._LuotXem != value))
+				{
+					this._LuotXem = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuotMua", DbType="Int")]
+		public System.Nullable<int> SoLuotMua
+		{
+			get
+			{
+				return this._SoLuotMua;
+			}
+			set
+			{
+				if ((this._SoLuotMua != value))
+				{
+					this._SoLuotMua = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiBat", DbType="Bit")]
+		public System.Nullable<bool> NoiBat
+		{
+			get
+			{
+				return this._NoiBat;
+			}
+			set
+			{
+				if ((this._NoiBat != value))
+				{
+					this._NoiBat = value;
 				}
 			}
 		}

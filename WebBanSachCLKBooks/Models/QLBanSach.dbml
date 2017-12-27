@@ -6,8 +6,8 @@
       <Column Name="Masach" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Vaitro" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Vitri" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="SACH_VIETSACH" Member="SACH" ThisKey="Masach" OtherKey="Masach" Type="SACH" IsForeignKey="true" />
       <Association Name="TACGIA_VIETSACH" Member="TACGIA" ThisKey="MaTG" OtherKey="MaTG" Type="TACGIA" IsForeignKey="true" />
+      <Association Name="SACH_VIETSACH" Member="SACH" ThisKey="Masach" OtherKey="Masach" Type="SACH" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.AspNetRoles" Member="AspNetRoles">
@@ -81,6 +81,16 @@
       <Association Name="NHAXUATBAN_SACH" Member="SACHes" ThisKey="MaNXB" OtherKey="MaNXB" Type="SACH" />
     </Type>
   </Table>
+  <Table Name="dbo.TACGIA" Member="TACGIAs">
+    <Type Name="TACGIA">
+      <Column Name="MaTG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenTG" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Diachi" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Tieusu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Dienthoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="TACGIA_VIETSACH" Member="VIETSACHes" ThisKey="MaTG" OtherKey="MaTG" Type="VIETSACH" />
+    </Type>
+  </Table>
   <Table Name="dbo.SACH" Member="SACHes">
     <Type Name="SACH">
       <Column Name="Masach" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -92,20 +102,13 @@
       <Column Name="Soluongton" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaNXB" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LuotXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoLuotMua" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoiBat" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="SACH_VIETSACH" Member="VIETSACHes" ThisKey="Masach" OtherKey="Masach" Type="VIETSACH" />
       <Association Name="SACH_CHITIETDONTHANG" Member="CHITIETDONTHANGs" ThisKey="Masach" OtherKey="Masach" Type="CHITIETDONTHANG" />
       <Association Name="CHUDE_SACH" Member="CHUDE" ThisKey="MaCD" OtherKey="MaCD" Type="CHUDE" IsForeignKey="true" />
       <Association Name="NHAXUATBAN_SACH" Member="NHAXUATBAN" ThisKey="MaNXB" OtherKey="MaNXB" Type="NHAXUATBAN" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TACGIA" Member="TACGIAs">
-    <Type Name="TACGIA">
-      <Column Name="MaTG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenTG" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Diachi" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Tieusu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Dienthoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="TACGIA_VIETSACH" Member="VIETSACHes" ThisKey="MaTG" OtherKey="MaTG" Type="VIETSACH" />
     </Type>
   </Table>
   <Function Name="dbo.SP_SELECT_SACH" Method="SP_SELECT_SACH">
@@ -392,6 +395,99 @@
       <Column Name="Soluongton" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TenChuDe" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="TenNXB" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_TIM_KIEM_SACH_THEO_TEN" Method="SP_TIM_KIEM_SACH_THEO_TEN">
+    <Parameter Name="TENSACH" Parameter="tENSACH" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="SP_TIM_KIEM_SACH_THEO_TENResult">
+      <Column Name="Masach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tensach" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Giaban" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Mota" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Anhbia" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ngaycapnhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Soluongton" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaNXB" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LuotXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_SACH_LUOT_XEM_NHIEU" Method="SP_SACH_LUOT_XEM_NHIEU">
+    <Parameter Name="SO_LUOT_XEM_YEU_CAU_THANH_SACH_LUOT_XEM_NHIEU" Parameter="sO_LUOT_XEM_YEU_CAU_THANH_SACH_LUOT_XEM_NHIEU" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_SACH_LUOT_XEM_NHIEUResult">
+      <Column Name="Masach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tensach" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Giaban" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Mota" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Anhbia" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ngaycapnhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Soluongton" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaNXB" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LuotXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoLuotMua" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_SACH_NOIBAT" Method="SP_SACH_NOIBAT">
+    <Parameter Name="SO_LUOT_MUA_YEU_CAU_THANH_SACH_NOI_BAT" Parameter="sO_LUOT_MUA_YEU_CAU_THANH_SACH_NOI_BAT" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_SACH_NOIBATResult">
+      <Column Name="Masach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tensach" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Giaban" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Mota" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Anhbia" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ngaycapnhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Soluongton" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaNXB" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LuotXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoLuotMua" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CAP_NHAT_LUOT_XEM_CUA_SACH_KHI_XEM_CHI_TIET_SACH_THEO_MA_SACH" Method="CAP_NHAT_LUOT_XEM_CUA_SACH_KHI_XEM_CHI_TIET_SACH_THEO_MA_SACH">
+    <Parameter Name="MASACH" Parameter="mASACH" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CAP_NHAT_LUOT_MUA_CUA_SACH_KHI_DAT_HANG_THEO_MA_SACH" Method="CAP_NHAT_LUOT_MUA_CUA_SACH_KHI_DAT_HANG_THEO_MA_SACH">
+    <Parameter Name="MASACH" Parameter="mASACH" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_CAP_NHAT_SO_LUONG_TON_CUA_SACH_THEO_MA_SACH" Method="SP_CAP_NHAT_SO_LUONG_TON_CUA_SACH_THEO_MA_SACH">
+    <Parameter Name="MASACH" Parameter="mASACH" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SOLUONGMUA" Parameter="sOLUONGMUA" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_TIM_KIEM_SACH_THEO_GIA" Method="SP_TIM_KIEM_SACH_THEO_GIA">
+    <Parameter Name="GIADAU" Parameter="gIADAU" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="GIACUOI" Parameter="gIACUOI" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="SP_TIM_KIEM_SACH_THEO_GIAResult">
+      <Column Name="Masach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tensach" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Giaban" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Mota" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Anhbia" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ngaycapnhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Soluongton" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaNXB" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LuotXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoLuotMua" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_SELECT_SACH_THEO_THUOC_TINH_NOI_BAT" Method="SP_SELECT_SACH_THEO_THUOC_TINH_NOI_BAT">
+    <ElementType Name="SP_SELECT_SACH_THEO_THUOC_TINH_NOI_BATResult">
+      <Column Name="Masach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tensach" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Giaban" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Mota" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Anhbia" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ngaycapnhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Soluongton" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaNXB" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LuotXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoLuotMua" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoiBat" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

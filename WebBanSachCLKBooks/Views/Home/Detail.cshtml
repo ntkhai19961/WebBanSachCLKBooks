@@ -15,7 +15,7 @@
 
 @{
     ViewBag.Title = "Detail";
-    Layout = "~/Views/Shared/TrangChu.cshtml";
+    Layout = "~/Views/Shared/Layout_GioHang.cshtml";
 }
 
 <h2>THÔNG TIN CHI TIẾT SÁCH</h2>
@@ -29,9 +29,18 @@
         <p style="font-weight:bold"> Giá Bán : <span style="color:red; font-size:16pt">@Model.Giaban VNĐ </span></p>
     </div>
     <div>
-        <div id="Datmua">
-            <a href="@Url.Action("ThemGioHang","GioHang", new { @MaSach = @Model.Masach })" class="list-group-item">Thêm vào giỏ hàng</a>
-        </div>
+
+        @if (Model.Soluongton > 0)
+        {
+            <div id="Datmua">
+                <a href="@Url.Action("ThemGioHang","GioHang", new { @MaSach = @Model.Masach })" class="list-group-item">Thêm vào giỏ hàng</a>
+            </div>
+        }
+        else
+        {
+            <p style="color:red; font-size:20px">Hết Hàng</p>
+        }
+
     </div>
 </div>
 <h3>Tên Sách : @Model.Tensach </h3>

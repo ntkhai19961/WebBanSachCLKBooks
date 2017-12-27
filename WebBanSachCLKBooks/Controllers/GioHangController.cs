@@ -33,7 +33,7 @@ namespace WebBanSachCLKBooks.Controllers
         }
         #endregion
 
-        // GET: GioHang
+     
         public ActionResult Index()
         {
             return View();
@@ -124,10 +124,6 @@ namespace WebBanSachCLKBooks.Controllers
         public ActionResult DatHang()
         {
 
-            //if(Session["KiemTraDangNhapChua"] == null || (int)Session["KiemTraDangNhapChua"] == 0 )
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
             AspNetUser user = new AspNetUser();
             user.Id = User.Identity.GetUserId();
             user.Email = User.Identity.GetUserName();
@@ -181,6 +177,14 @@ namespace WebBanSachCLKBooks.Controllers
                     CHITIETDONTHANG ctdh = new CHITIETDONTHANG();
                     ctdh.MaDonHang = ddh.MaDonHang;
                     ctdh.Masach = item.MaSach;
+
+                    //cập nhật số lượt mua của sách
+                    db.CAP_NHAT_LUOT_MUA_CUA_SACH_KHI_DAT_HANG_THEO_MA_SACH(item.MaSach);
+
+                    //cập nhật số lượng tồn của sách
+                    // chưa xử lý ngoại lệ trừ xuống nhỏ hơn 0
+                    db.SP_CAP_NHAT_SO_LUONG_TON_CUA_SACH_THEO_MA_SACH(item.MaSach,item.SoLuong);
+
                     ctdh.Soluong = item.SoLuong;
                     ctdh.Dongia = (decimal)item.DonGia;
                     db.SP_INSERT_CTDH(ctdh.MaDonHang, ctdh.Masach, ctdh.Soluong, ctdh.Dongia);
