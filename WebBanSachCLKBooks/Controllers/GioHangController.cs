@@ -8,6 +8,7 @@ using WebBanSachCLKBooks.Models;
 
 namespace WebBanSachCLKBooks.Controllers
 {
+    //quan li gio hang
     public class GioHangController : Controller
     {
         QLBanSachDataContext db = new QLBanSachDataContext();

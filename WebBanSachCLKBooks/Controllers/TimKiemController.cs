@@ -6,7 +6,8 @@ using System.Web.Mvc;
 using WebBanSachCLKBooks.Models;
 
 namespace WebBanSachCLKBooks.Controllers
-{
+{   
+    //Tim kiếm sách
     public class TimKiemController : Controller
     {
         QLBanSachDataContext db = new QLBanSachDataContext();
